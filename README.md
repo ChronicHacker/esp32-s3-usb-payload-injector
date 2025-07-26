@@ -1,15 +1,15 @@
 # ESP32-S3 USB Payload Injector
 
-A collection of 19 standalone Arduino `.ino` payloads designed for the ESP32-S3, turning your microcontroller into a powerful USB prank or automation tool. Inject PowerShell commands, play sounds, open websites, and dump sensitive system data with ease.
+A collection of 20 standalone Arduino `.ino` payloads designed for the ESP32-S3, turning your microcontroller into a powerful USB prank or automation tool. Inject PowerShell commands, play sounds, open websites, and dump system data with ease.
 
 ---
 
 ## 🔥 Features
 
-- Plug-and-play `.ino` payloads (no extra libraries required beyond `Keyboard`)
-- USB HID injection compatible with Windows
-- Includes PowerShell pranks, audio, system info dumps, and more
-- Built for ESP32-S3 with native USB support
+- Plug-and-play `.ino` payloads — no `.h` files required
+- USB HID injection for Windows systems
+- Includes pranks, info dumps, PowerShell tricks, and TTS
+- Built specifically for ESP32-S3 with native USB + TinyUSB support
 
 ---
 
@@ -26,12 +26,12 @@ A collection of 19 standalone Arduino `.ino` payloads designed for the ESP32-S3,
 - `open-calculator.ino` – Opens Calculator
 - `run-taskmgr.ino` – Opens Task Manager
 - `speak-funny-quote.ino` – Speaks “Hack the planet!”
-- `fake-blue-screen.ino` – Fakes a blue screen with blue text
+- `fake-blue-screen.ino` – Simulates a BSOD with blue text
 - `open-run-dialog.ino` – Opens the Run window
 - `fake-shutdown.ino` – Runs `shutdown /s /t 60`
-- `reverse-text-prank.ino` – Writes reversed text in Notepad
+- `reverse-text-prank.ino` – Types reversed text into Notepad
 - `list-startup-items.ino` – Dumps startup items to Desktop
-- `dump-wifi-passwords.ino` – Dumps saved Wi-Fi SSIDs & passwords to Desktop
+- `dump-wifi-passwords.ino` – Dumps saved SSIDs & passwords to Desktop
 - `dump-system-info.ino` – Dumps system info to Desktop
 - `dump-ipconfig.ino` – Dumps network info to Desktop
 - `dump-open-ports.ino` – Dumps open TCP ports to Desktop
@@ -40,67 +40,76 @@ A collection of 19 standalone Arduino `.ino` payloads designed for the ESP32-S3,
 
 ## 🛠 Requirements
 
-- ESP32-S3 dev board (with native USB)
-- Arduino IDE with ESP32 board support installed
-- USB cable that supports data (not just charging)
+- ESP32-S3 development board (with native USB support)
+- Arduino IDE 2.x or newer
+- USB data cable (not just power)
+- Windows PC for testing
 
 ---
 
 ## 🚀 How to Use
 
-### Step-by-Step Setup
+### 1️⃣ Install ESP32 Board Support
 
-1. Open **Arduino IDE**.
-2. Install ESP32 support:
-   - Go to **File > Preferences**.
-   - In **Additional Board Manager URLs**, add:
+1. Open **Arduino IDE**
+2. Go to **File > Preferences**
+3. In “Additional Board Manager URLs”, add: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+4. Then go to **Tools > Board > Board Manager**
+5. Search for `esp32` and install the latest package by **Espressif Systems**
 
-     ```
-     https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-     ```
+---
 
-   - Then go to **Tools > Board > Board Manager**, search for **esp32**, and install it.
+### 2️⃣ Select Correct Board & Enable TinyUSB
 
-3. Select your board:  
-   Go to **Tools > Board > ESP32 Arduino > ESP32S3 Dev Module**
+In **Tools**, set the following:
 
-4. Configure these settings under **Tools**:
+| Setting                  | Value                          |
+|--------------------------|--------------------------------|
+| **Board**                | ESP32S3 Dev Module             |
+| USB CDC On Boot          | Enabled                        |
+| USB Mode                 | Hardware CDC and HID           |
+| USB Firmware MSC         | Disabled                       |
+| USB Stack                | TinyUSB                        |
+| Flash Size               | 8MB (or match your board)      |
+| Flash Mode               | QIO                            |
+| Flash Frequency          | 80MHz                          |
+| PSRAM                    | OPI PSRAM                      |
+| Upload Speed             | 921600 (or 460800 if needed)   |
+| Port                     | Select your ESP32-S3 port      |
 
-| Setting               | Value                        |
-|-----------------------|------------------------------|
-| USB CDC On Boot       | Enabled                      |
-| USB Mode              | HID                          |
-| USB Firmware MSC      | Disabled                     |
-| Flash Size            | 8MB (or match your board)    |
-| Flash Mode            | QIO                          |
-| Flash Frequency       | 80MHz                        |
-| PSRAM                 | OPI PSRAM                    |
-| Upload Speed          | 921600 (or 460800 if needed) |
-| Port                  | Select your ESP32-S3 port    |
+✅ `USB Mode` and `USB Stack = TinyUSB` are critical for HID injection.
 
-5. Open any `.ino` file from this repo.
-6. Click **Upload**.
-7. Plug the board into a Windows machine. The payload will execute automatically.
+---
 
-> ⚠️ Only one `.ino` can be active at a time. To switch payloads, upload a different sketch.
+### 3️⃣ Upload a Payload
+
+1. Open any `.ino` file from the repo
+2. Connect your ESP32-S3 to your PC with a data USB cable
+3. Select the correct port under **Tools > Port**
+4. Click **Upload**
+5. Once uploaded, unplug and replug the board into a Windows machine — the payload will auto-execute
+
+> ⚠️ Only one `.ino` payload can be active at a time. Upload a different file to change payloads.
 
 ---
 
 ## ⚠️ Ethical Use
 
-These payloads are for **educational and ethical purposes only**.  
-Never run them on a system you do not have permission to test.
+These scripts are for **educational and ethical hacking purposes only**.
 
-> 🎓 Learn responsibly. Hack ethically. Never be *that* guy.
+**Do NOT** use them on any device without explicit permission.  
+Use responsibly, and never for malicious activity.
+
+> 💡 Smart hackers get consent. Dumb ones get caught.
 
 ---
 
 ## 📜 License
 
-**MIT License**  
-Use freely, modify proudly, credit respectfully.
+MIT License  
+Use, modify, remix — just credit the author.
 
-Built with pride by [Chr0nicHacker](https://github.com/Chr0nicHacker)  
+Created with 🤘 by [Chr0nicHacker](https://github.com/Chr0nicHacker)  
 🌐 https://www.chronichacker.com
 
 > 💬 Break. Build. Blaze New Trails.
