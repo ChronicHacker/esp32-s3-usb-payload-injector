@@ -50,10 +50,21 @@ A collection of 19 standalone Arduino `.ino` payloads designed for the ESP32-S3,
 
 1. Open Arduino IDE.
 2. Go to **Tools > Board > ESP32 Arduino > ESP32S3 Dev Module**.
-3. Select the appropriate COM port under **Tools > Port**.
-4. Open any `.ino` file from this project folder.
-5. Click **Upload**.
-6. Plug the board into a Windows machine — the payload executes automatically.
+3. | Setting          | Value                        |
+| ---------------- | ---------------------------- |
+| USB CDC On Boot  | Enabled                      |
+| USB Mode         | **HID**                      |
+| USB Firmware MSC | Disabled                     |
+| Flash Size       | 8MB (or match your board)    |
+| Flash Mode       | QIO                          |
+| Flash Frequency  | 80MHz                        |
+| PSRAM            | OPI PSRAM                    |
+| Upload Speed     | 921600 (or 460800 if errors) |
+| Port             | Select your ESP32-S3 port    |
+
+5. Open any `.ino` file from this project folder.
+6. Click **Upload**.
+7. Plug the board into a Windows machine — the payload executes automatically.
 
 > ⚠️ Only one payload can run at a time. To use a different one, re-upload the new `.ino`.
 
