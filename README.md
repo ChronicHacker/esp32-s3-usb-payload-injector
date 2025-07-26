@@ -41,50 +41,66 @@ A collection of 19 standalone Arduino `.ino` payloads designed for the ESP32-S3,
 ## 🛠 Requirements
 
 - ESP32-S3 dev board (with native USB)
-- Arduino IDE with ESP32 board support
-- USB cable for programming
+- Arduino IDE with ESP32 board support installed
+- USB cable that supports data (not just charging)
 
 ---
 
 ## 🚀 How to Use
 
-1. Open Arduino IDE.
-2. Go to **Tools > Board > ESP32 Arduino > ESP32S3 Dev Module**.
-3. | Setting          | Value                        |
-| ---------------- | ---------------------------- |
-| USB CDC On Boot  | Enabled                      |
-| USB Mode         | **HID**                      |
-| USB Firmware MSC | Disabled                     |
-| Flash Size       | 8MB (or match your board)    |
-| Flash Mode       | QIO                          |
-| Flash Frequency  | 80MHz                        |
-| PSRAM            | OPI PSRAM                    |
-| Upload Speed     | 921600 (or 460800 if errors) |
-| Port             | Select your ESP32-S3 port    |
+### Step-by-Step Setup
 
-5. Open any `.ino` file from this project folder.
+1. Open **Arduino IDE**.
+2. Install ESP32 support:
+   - Go to **File > Preferences**.
+   - In **Additional Board Manager URLs**, add:
+
+     ```
+     https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+     ```
+
+   - Then go to **Tools > Board > Board Manager**, search for **esp32**, and install it.
+
+3. Select your board:  
+   Go to **Tools > Board > ESP32 Arduino > ESP32S3 Dev Module**
+
+4. Configure these settings under **Tools**:
+
+| Setting               | Value                        |
+|-----------------------|------------------------------|
+| USB CDC On Boot       | Enabled                      |
+| USB Mode              | HID                          |
+| USB Firmware MSC      | Disabled                     |
+| Flash Size            | 8MB (or match your board)    |
+| Flash Mode            | QIO                          |
+| Flash Frequency       | 80MHz                        |
+| PSRAM                 | OPI PSRAM                    |
+| Upload Speed          | 921600 (or 460800 if needed) |
+| Port                  | Select your ESP32-S3 port    |
+
+5. Open any `.ino` file from this repo.
 6. Click **Upload**.
-7. Plug the board into a Windows machine — the payload executes automatically.
+7. Plug the board into a Windows machine. The payload will execute automatically.
 
-> ⚠️ Only one payload can run at a time. To use a different one, re-upload the new `.ino`.
+> ⚠️ Only one `.ino` can be active at a time. To switch payloads, upload a different sketch.
 
 ---
 
 ## ⚠️ Ethical Use
 
-These payloads are for **educational and ethical purposes** only.  
-Get permission before using this on any device that isn't yours.
+These payloads are for **educational and ethical purposes only**.  
+Never run them on a system you do not have permission to test.
 
-> This is a learning tool — not a hacking tool. Be a smart hacker, not a dumb one.
+> 🎓 Learn responsibly. Hack ethically. Never be *that* guy.
 
 ---
 
 ## 📜 License
 
-MIT License  
+**MIT License**  
 Use freely, modify proudly, credit respectfully.
 
-Built with pride by [Chr0nicHacker]
+Built with pride by [Chr0nicHacker](https://github.com/Chr0nicHacker)  
 🌐 https://www.chronichacker.com
 
 > 💬 Break. Build. Blaze New Trails.
